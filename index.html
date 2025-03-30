@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Agreement Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .agreement-output {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e9f5e9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rental Agreement Generator</h1>
+    <div class="container">
+        <form id="agreementForm">
+
+	    <label for="LlpName">LLP Name:</label>
+            <input type="text" id="LlpName" required>
+
+	    <label for="PName">Partner Name:</label>
+            <input type="text" id="PName" required>
+
+ <label for="Din">DIN:</label>
+            <input type="text" id="Din" required>
+
+ <label for="FName">Father Name:</label>
+            <input type="text" id="FName" required>
+
+ <label for="Address">Address:</label>
+            <input type="text" id="Address" required>
+
+ <label for="Email">Email:</label>
+            <input type="text" id="Email" required>
+
+ <label for="Mobile">Mobile:</label>
+            <input type="text" id="Mobile" required>
+
+ <label for="Pan">Pan:</label>
+            <input type="text" id="Pan" required>
+
+ <label for="Dob">Dob:</label>
+            <input type="text" id="Dob" required>
+
+ <label for="Date">Date:</label>
+            <input type="text" id="Date" required>
+
+ <label for="Place">Place:</label>
+            <input type="text" id="Place" required>
+
+
+        
+
+            
+
+            <button type="submit">Generate Rental Agreement</button>
+        </form>
+
+        <div id="agreementOutput" class="agreement-output" style="display: none;">
+            <h2>Rental Agreement</h2>
+            <pre id="agreementText"></pre>
+        </div>
+    </div>
+
+   
+<script>
+
+
+    function downloadAgreementAsWord() {
+        const LlpName = document.getElementById('LlpName').value;
+        const PName = document.getElementById('PName').value;
+	const Din = document.getElementById('Din').value;
+	const FName = document.getElementById('FName').value;
+	const Address = document.getElementById('Address').value;
+	const Email = document.getElementById('Email').value;
+	const Mobile = document.getElementById('Mobile').value;
+	const Pan = document.getElementById('Pan').value;
+	const Dob = document.getElementById('Dob').value;
+	const Date = document.getElementById('Date').value;
+	const Place = document.getElementById('Place').value;
+
+
+      
+
+        // Add 12 empty lines before content
+        const blankLines = "<p style='margin: 20px 0;'>&nbsp;</p>".repeat(10);
+
+        // Word-compatible HTML with formatting
+        const agreementHTML = `
+            <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+            <head><meta charset='UTF-8'></head>
+            <body style="font-family:Calibri, sans-serif; font-size:12pt; line-height:1.6;">
+
+<div style="line-height: 1; margin: 0; padding: 0;">
+  <h3 style="text-align:center; text-decoration: ; margin: 0; padding: 0;">Form 9</h3>
+  <p style="text-align:center; margin: 0; padding: 0; font-size: 0.9em;">[See rule 7 and 10(8)]</p>
+  <h3 style="text-align:center; text-decoration: ; margin: 0; padding: 0;">CONSENT TO ACT AS DESIGNATED PARTNER</h3>
+</div>
+
+<p style="text-align:justify;">To,</p>
+<h3 style="text-align:justify;">${LlpName}</h3>
+<h3 style="text-align:justify;">Subject: Consent to act as Designated Partner</h3>
+<p style="text-align:justify;">I, ${PName}, hereby give my consent to act as designated partner of ${LlpName}, pursuant to Section 7(3) of the Limited Liability Partnership Act, 2008.</p>
+<h3 style="text-align:justify; text-decoration:underline;">Particulars</h3
+
+<table style="border-collapse: collapse; width: 100%;">
+    <tbody>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px; width: 5%;">1</td>
+            <td style="text-align: left; padding: 4px; width: 40%; white-space: nowrap;">DIN:</td>
+            <td style="text-align: left; padding: 4px; width: 55%;">${Din}</td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px;">2</td>
+            <td style="text-align: left; padding: 4px; white-space: nowrap;">Name:</td>
+            <td style="text-align: left; padding: 4px;">${PName}</td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px;">3</td>
+            <td style="text-align: left; padding: 4px; white-space: nowrap;">Father’s/Husband’s Name:</td>
+            <td style="text-align: left; padding: 4px;">${FName}</td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px;">4</td>
+            <td style="text-align: left; padding: 4px; white-space: nowrap;">Present residential address:</td>
+            <td style="text-align: left; padding: 4px;">${Address}</td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px;">5</td>
+            <td style="text-align: left; padding: 4px; white-space: nowrap;">E-mail Id:</td>
+            <td style="text-align: left; padding: 4px;">${Email}</td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px;">6</td>
+            <td style="text-align: left; padding: 4px; white-space: nowrap;">Contact Number:</td>
+            <td style="text-align: left; padding: 4px;">${Mobile}</td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px;">7</td>
+            <td style="text-align: left; padding: 4px; white-space: nowrap;">PAN:</td>
+            <td style="text-align: left; padding: 4px;">${Pan}</td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="text-align: left; padding: 4px;">8</td>
+            <td style="text-align: left; padding: 4px; white-space: nowrap;">Date of Birth:</td>
+            <td style="text-align: left; padding: 4px;">${Dob}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p style="text-align:justify;">I hereby state that I satisfy the conditions and requirements for being eligible to be a partner and I have not been disqualified to act as a partner. </p>
+
+
+
+
+<div style="margin-bottom: 20px;">.       </div>
+
+<h3 style="text-align:justify;">Designated Partner </h3>
+
+<p style="text-align:justify;">___________________ </p>
+
+<h3 style="text-align:justify;">Date: ${Date} </h3>
+
+<h3 style="text-align:justify;">Place: ${Place} </h3>
+
+
+
+
+            </body>
+            </html>
+        `;
+ // Create a Blob (ensuring correct encoding)
+            const blob = new Blob(['\ufeff', agreementHTML], {
+                type: "application/msword"
+            });
+
+            // Create a temporary link for downloading
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Rental_Agreement.doc";
+
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+
+            // Cleanup
+            document.body.removeChild(link);
+        }</script>
+
+
+<button type="button" onclick="downloadAgreementAsWord()">Download as Word</button>
+
+</body>
+</html>
